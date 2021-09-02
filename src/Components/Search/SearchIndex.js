@@ -11,37 +11,30 @@ class SearchIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      filtered: this.state.things
-    });
-    console.log(this.state.things);
+    this.handleChange()
   }
 
-  componentDidUpdate() {
-    if(this.state.filtered !== this.state.things) {
-    this.setState({
-      filtered: this.state.things
-    });
-    }
-  }
-
-  handleChange(e) {
-    let results = [];
-    let newResults = [];
-    if (e.target.value !== '') {
-      results = this.state.things;
-      newResults = results.filter(terms => {
-        const lower = terms.toLowerCase();
-        const filter = e.target.value.toLowerCase();
-        return lower.includes(filter);
-      });
+  handleChange() {
+    let happy = document.getElementById('searchterms').value.toLowerCase();
+    console.log(happy);
+    if (happy === '') {
+      this.setState({
+        filtered: this.state.things
+      })
     } else {
-      newResults = this.state.things;
+      let results = this.state.things.filter(terms => {
+        if (terms.toLowerCase().includes(happy)) {
+          return terms;
+        } 
+        });
+  
+      this.setState({
+        filtered: results
+      });
     }
-    this.setState({
-      filtered: newResults
-    });
-    this.handleChange = this.handleChange.bind(this);
+    
+    
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
@@ -51,12 +44,13 @@ class SearchIndex extends React.Component {
             <Input 
             type="text"
             className="input"
+            id="searchterms"
             onChange={this.handleChange}
             placeholder="search"
-             />
+            />
         </form>
         <h3>Results:</h3>
-          {this.state.filtered.map((items) => (
+          {this.state.filtered.map(items => (
             <li key={items}>{items}</li>
           ))}
       </div>

@@ -22,7 +22,7 @@ const Search = () => {
          </li>
        </ul>
        <hr />
-       { <SearchIndex /> }
+       <SearchIndex />
      </Container>
    );
 
