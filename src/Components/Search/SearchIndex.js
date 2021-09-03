@@ -7,7 +7,8 @@ class SearchIndex extends React.Component {
     this.state = {
     things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards'],
     filtered: []
-  }
+  } 
+  this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -32,9 +33,6 @@ class SearchIndex extends React.Component {
         filtered: results
       });
     }
-    
-    
-    // this.handleChange = this.handleChange.bind(this);
   }
 
   render() {
