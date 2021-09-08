@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import {Container} from 'reactstrap';
 
+
 class ToDo extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      
+      list: []
     }
   }
+
+  addTask() {
+
+  }
+
 
   render() {
   return(
@@ -34,6 +40,15 @@ class ToDo extends Component {
         <hr />
         <div>
           <h3>To-Do List</h3>
+          <form>
+            <Input
+            type="text"
+            id="addItem"
+            onChange={}
+            placeholder="New Task"
+            />
+          </form>
+
         </div>
       </Container>
   )};
